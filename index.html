@@ -7,15 +7,19 @@
     <title>Document</title>
     <link rel="stylesheet" href="index.css">
 
-
 </head>
 
 <body>
     <!-- <header></header> -->
-    <!-- <nav></nav> -->
+    <nav>
+        <a href="landing.html">Go Home</a>
+        <a href="mars.html">Go to Mars</a>
+        <a href="apod.html">Go to APOD</a>
+        <a href="earth.html">Go to Earth</a>
+    </nav>
 
-    <h1>Fetch Rover Data</h1>
-    <form id="form" onsubmit="searchFunction(event, page)">
+    <h1>Fetch NASA Data</h1>
+    <form id="form" onsubmit="searchFunction(event)">
         <input type="text" name="search" id="search" placeholder="Search..." />
         <button type="submit">Search</button>
 
@@ -24,10 +28,10 @@
 
     <div id="container"></div>
 
-    <div id="button-field">
-        <button class="previous-button" onsubmit="searchFunction(page)">Previous</button>
-        <button class="next-button" onsubmit="searchFunction(page)">Next</button>
-    </div>
+    <!-- <div id="button-field">
+        <button class="previous-button" onsubmit="searchFunction(event, page)">Previous</button>
+        <button class="next-button" onsubmit="searchFunction(event, page)">Next</button>
+    </div> -->
 
     <!-- <footer>
         <p>Brought to you by NASA</p>
