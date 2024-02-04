@@ -1,60 +1,56 @@
-const buttons = document.querySelector("#button-field")
+const buttons = document.querySelector("#button-field");
 // const previousButton = document.querySelector("#previous-button");
 // const nextButton = document.querySelector("#next-button");
+
 
 
 // my API key
 const APIKey = "8uZGGWe7lasxPQhS1uvOau4cxaPGO8lxiShMIGaK";
 
-// https://images-api.nasa.gov
-// https://images-api.nasa.gov/search?q=
-
 
 // Mars Rover Photos
-// let url;
-// url = "rover.json";
+let MarsUrl;
+MarsUrl = "rover.json";
 
 
-// function searchFunction(event) {
-//     event.preventDefault();
-//     console.log("Search Start");
+function marsSearchFunction(event) {
+    event.preventDefault();
+    console.log("Search Start");
 
-//     fetch(url)
-//         .then(response => response.json()) 
-//         .then(data => { 
+    fetch(MarsUrl)
+        .then(response => response.json())
+        .then(data => {
 
-//             console.log(data);
+            console.log(data);
 
-//             const info = data.photos;
-//             const search = document.querySelector("#search").value;
+            const info = data.photos;
+            const search = document.querySelector("#search").value;
 
-//             console.log(search);
+            console.log(search);
 
-//             const output = info
-//                 .filter(p => p.camera.full_name.toLowerCase().includes(search))
-//                 .map(p => 
-//                     `<div>
-//                     <h3>Camera: ${p.camera.full_name}</h3>
-//                     <img class=mars-pic src="${p.img_src}"</img>
-//                     </div>`
-//                     )
-//                 .join("");
+            const output = info
+                .filter(p => p.id == (search))
+                .map(p =>
+                    `<div>
+                    <h3>Camera: ${p.camera.full_name}</h3>
+                    <img class=mars-pic src="${p.img_src}"</img>
+                    </div>`
+                )
+                .join("");
 
-//             document.querySelector("#container").innerHTML = output;
-//         });
+            document.querySelector("#container").innerHTML = output;
+        });
 
-// };
+};
 
 
 // NASA Image and Video Library
 
-let pageNumber = 2;
+let pageNumber = 1;
 let pageSizeNumber = 5;
 
 // endpoint url
-const endpoint = `https://images-api.nasa.gov/search?q=moon`
-const page = `&page=${pageNumber}`;
-const pageSize = `&page_size=${pageSizeNumber}`;
+const endpoint = `https://images-api.nasa.gov/search?q=moon&page=${pageNumber}&page_size=${pageSizeNumber}`;
 // https://images-api.nasa.gov/search?q=moon&page=2&page_size=6
 // https://images-api.nasa.gov/search?q=moon&keywords=space&page_size=2
 // video fil i json
@@ -62,15 +58,15 @@ const pageSize = `&page_size=${pageSizeNumber}`;
 let nasa;
 nasa = "nasa.json";
 
-function searchFunction(event, page) {
+function searchFunction(event, pageNumber) {
     event.preventDefault();
     console.log("Search Start");
 
-    fetch(endpoint + page + pageSize)
+    fetch(endpoint)
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            console.log(endpoint + page + pageSize);
+            console.log(endpoint);
             console.log("pageNumber", pageNumber);
 
             const info = data.collection.items;
@@ -86,6 +82,7 @@ function searchFunction(event, page) {
                     <h3>Result: ${c.data[0].title}</h3>
                     <ul>${c.data[0].keywords.join("<ul></ul>")}</ul>
                     <img src="${c.links && c.links[0].href}"</img>
+                    <p>${c.data[0].description}</p>
                     </div>`
                 )
                 .join("");
@@ -104,7 +101,28 @@ function searchFunction(event, page) {
 
 };
 
-buttons.addEventListener("click", function (event, page) {
+
+// https://api.nasa.gov/planetary/earth/imagery?lon=19.73&lat=-23.88&date=2019-01-01&dim=0.15&api_key=8uZGGWe7lasxPQhS1uvOau4cxaPGO8lxiShMIGaK
+function earthSearchFunction(event) {
+    event.preventDefault();
+    console.log("starting...");
+
+            const longitude = document.querySelector("#longitude").value;
+            const latitude = document.querySelector("#latitude").value;
+
+            console.log(longitude, latitude);
+
+            const output = `<div>
+            <h2>Earth Coordinates: ${latitude}, ${longitude}...</h2>
+            <img class=mars-pic src="${`https://api.nasa.gov/planetary/earth/imagery?lon=${longitude}&lat=${latitude}&date=2019-01-01&dim=0.15&api_key=${APIKey}`}"
+            </img>
+            </div>`
+
+            document.querySelector("#container").innerHTML = output;
+        };
+
+
+buttons.addEventListener("click", function (event) {
 
     if (event.target.classList.contains("previous-button")) {
         console.log("going back");
@@ -118,49 +136,11 @@ buttons.addEventListener("click", function (event, page) {
         console.log(pageNumber);
     };
 
-})
+});
 
 fetch
 
-// APOD - Astronomy Picture of the Day
-// const apodEndpoint = `https://api.nasa.gov/planetary/apod?api_key=${"8uZGGWe7lasxPQhS1uvOau4cxaPGO8lxiShMIGaK"}`;
-// // let k;
-// // k = "k.json";
 
-// // change to a onclick button
-// function searchFunction(event) {
-//     event.preventDefault();
-//     console.log("Search Start");
-
-//     const xhr = new XMLHttpRequest();
-//     console.log("xhr", xhr);
-
-//     xhr.open("GET", apodEndpoint)
-
-//     xhr.addEventListener("load", () => {
-
-//         console.log(xhr.status);
-
-//         console.log(xhr.readyState);
-
-//         if (xhr.status === 200 && xhr.readyState === 4) {
-
-//             console.log(xhr.responseText, typeof xhr.responseText);
-
-//             const obj = JSON.parse(xhr.responseText);
-//             console.log("obj", obj, typeof obj);
-
-//             document.querySelector("#container").innerHTML =
-//                 `<h2>Image of the Day: ${obj.title}</h2>
-//             <p><img src="${obj.url}" </img>`;
-
-//             console.log(JSON.stringify(obj));
-//         }
-//     });
-
-//     xhr.send();
-
-// };
 
 
 // earth
