@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+
+
+</head>
+
+<body>
+
+    <!-- <header></header> -->
+    <nav>
+        <a href="landing.html">Go Home</a>
+        <a href="index.html">Go to NASA</a>
+        <a href="apod.html">Go to APOD</a>
+        <a href="earth.html">Go to Earth</a>
+    </nav>
+
+    <h1>Fetch Rover Data</h1>
+    <form id="form" onsubmit="marsSearchFunction(event)">
+        <input type="text" name="search" id="search" placeholder="Search..." />
+        <button type="submit">Search</button>
+
+        <!-- filter buttons ? -->
+    </form>
+
+    <div id="container"></div>
+
+    <!-- <footer>
+            <p>Brought to you by NASA</p>
+        </footer> -->
+    <script src="script.js"></script>
+</body>
+
+</html>
