@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+
+</head>
+
+<body class="moon-body">
+    <header class="moon-header">
+        <a href="landing.html">
+            <img src="images/back arrow.svg" class="back-arrow" alt="back-arrow" href="landing.html">
+        </a>
+    </header>
+
+    <nav class="planet-nav">
+        <a class="sub-orb mars-orb pos-1" href="mars.html"></a>
+        <a class="sub-orb earth-orb pos-2" href="earth.html"></a>
+        <div class="main-orb moon-orb"></div>
+    </nav>
+
+    <form id="form" onsubmit="searchFunction(event)">
+        <h1>Check out the Moon</h1>
+        <input type="text" name="search" id="search" placeholder="Search..." />
+        <button type="submit">Search</button>
+
+        <!-- filter buttons can be added here -->
+    </form>
+
+    <div id="outer-container">
+        <div id="inner-container"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
