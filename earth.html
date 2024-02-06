@@ -10,32 +10,32 @@
 
 </head>
 
-<body>
-
-    <!-- <header></header> -->
-    <nav>
-        <a href="landing.html">Go Home</a>
-        <a href="index.html">Go to NASA</a>
-        <a href="apod.html">Go to APOD</a>
-        <a href="earth.html">Go to Earth</a>
+<body class="earth-body">
+    <header>
+        <a href="landing.html">
+            <img src="images/back arrow.svg" class="back-arrow" alt="back-arrow" href="landing.html">
+        </a>
+    </header>
+    
+    <nav class="planet-nav">
+        <a class="sub-orb moon-orb pos-1" href="index.html"></a>
+        <a class="sub-orb mars-orb pos-2" href="mars.html"></a>
+        <div class="main-orb earth-orb"></div>
     </nav>
 
-    <h1>Fetch Earth Data</h1>
     <form id="form" onsubmit="earthSearchFunction(event)">
+        <h1>Satellite Views of Earth</h1>
         <!-- between -180 and 180 -->
         <input type="text" name="longitude" id="longitude" placeholder="Enter a longitude value"  required/>
         <!-- between -90 and 90 -->
         <input type="text" name="latitude" id="latitude" placeholder="Enter a latitude value"  required/>
         <button type="submit">Search</button>
 
-        <!-- suggested coordinates -->
+        <!-- suggested search coordinates can be shown to the user -->
     </form>
 
     <div id="container"></div>
 
-    <!-- <footer>
-            <p>Brought to you by NASA</p>
-        </footer> -->
     <script src="script.js"></script>
 </body>
 

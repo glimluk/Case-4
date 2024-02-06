@@ -6,33 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="index.css">
-
-
 </head>
 
-<body>
+<body class="mars-body">
 
-    <!-- <header></header> -->
-    <nav>
-        <a href="landing.html">Go Home</a>
-        <a href="index.html">Go to NASA</a>
-        <a href="apod.html">Go to APOD</a>
-        <a href="earth.html">Go to Earth</a>
+    <header>
+        <a href="landing.html">
+            <img src="images/back arrow.svg" class="back-arrow" alt="back-arrow" href="landing.html">
+        </a>
+    </header>
+
+    <nav class="planet-nav">
+        <a class="sub-orb earth-orb pos-1" href="earth.html"></a>
+        <a class="sub-orb moon-orb pos-2" href="index.html"></a>
+        <div class="main-orb mars-orb"></div>
     </nav>
 
-    <h1>Fetch Rover Data</h1>
     <form id="form" onsubmit="marsSearchFunction(event)">
+        <h1>Photos from Mars Curiosity</h1>
         <input type="text" name="search" id="search" placeholder="Search..." />
         <button type="submit">Search</button>
 
-        <!-- filter buttons ? -->
+        <!-- filter buttons ex. pick a rover -->
     </form>
 
     <div id="container"></div>
 
-    <!-- <footer>
-            <p>Brought to you by NASA</p>
-        </footer> -->
     <script src="script.js"></script>
 </body>
 
