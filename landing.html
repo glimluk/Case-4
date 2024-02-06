@@ -9,24 +9,33 @@
 
 </head>
 
-<body>
-    <header></header>
+<body class="landing-body">
+    <header>
+        <img src="images/NASA_logo.svg.png" alt="NASA logo" id="nasa-logo">
+        <p>
+            Welcome!<br>
+            On this site you can search through several NASA APIs
+        </p>
+    </header>
 
     <nav id="home-nav">
-        <div class="landing-container nasa-nav">
-            <div class="text-box"><a href="index.html">Fly me to the Moon</a></div>
-        </div>
         <div class="landing-container mars-nav">
             <div class="text-box"><a href="mars.html">Life on Mars</a></div>
         </div>
+        <div class="landing-container nasa-nav">
+            <div class="text-box"><a href="moon.html">Fly me to the Moon</a></div>
+        </div>
         <div class="landing-container earth-nav">
-            <div class="text-box"><a href="earth.html">Go to Earth</a></div>
+            <div class="text-box"><a href="earth.html">Down to Earth</a></div>
         </div>
     </nav>
 
     <footer>
         <p>Brought to you by NASA</p>
-        <a href="apod.html">Go to APOD</a>
+        <div class="apod-nav">
+            <a href="apod.html">Check out the astronomy picture of the day!</a>
+            <img src="images/astronaut.png" alt="astronaut" id="astronaut">
+        </div>
     </footer>
 
     <script src="script.js"></script>
