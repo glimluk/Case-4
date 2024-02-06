@@ -9,15 +9,16 @@ const APIKey = "8uZGGWe7lasxPQhS1uvOau4cxaPGO8lxiShMIGaK";
 
 
 // Mars Rover Photos
-let MarsUrl;
-MarsUrl = "rover.json";
+let marsUrl;
+marsUrl = `https://api.nasa.gov/mars-photos/api/v1/rovers/Curiosity/photos?sol=1000&api_key=${APIKey}`;
+// marsUrl = "rover.json";
 
 
 function marsSearchFunction(event) {
     event.preventDefault();
     console.log("Search Start");
 
-    fetch(MarsUrl)
+    fetch(marsUrl)
         .then(response => response.json())
         .then(data => {
 
@@ -31,9 +32,9 @@ function marsSearchFunction(event) {
             const output = info
                 .filter(p => p.id == (search))
                 .map(p =>
-                    `<div>
+                    `<div id="result-container">
                     <h3>Camera: ${p.camera.full_name}</h3>
-                    <img class=mars-pic src="${p.img_src}"</img>
+                    <img class=image-container src="${p.img_src}"</img>
                     </div>`
                 )
                 .join("");
@@ -75,15 +76,20 @@ function searchFunction(event, pageNumber) {
             console.log(search);
 
             console.log(info[0]);
+            // the function will search if the titles match the search value
+            // it will then display the title, keywords, image, and description
             const output = info
                 .filter(c => c.data[0].title.toLowerCase().includes(search))
                 .map(c =>
-                    `<div>
-                    <h3>Result: ${c.data[0].title}</h3>
-                    <ul>${c.data[0].keywords.join("<ul></ul>")}</ul>
-                    <img src="${c.links && c.links[0].href}"</img>
-                    <p>${c.data[0].description}</p>
-                    </div>`
+                    `<div id="pre-container">
+                        <div>
+                            <h3>Result: ${c.data[0].title}</h3>
+                            <p>${c.data[0].keywords.join(", ")}</p>
+                            <img class=image-container src="${c.links && c.links[0].href}"</img>
+                            <p>${c.data[0].description}</p>
+                        </div>
+                    </div>
+                    <br>`
                 )
                 .join("");
 
@@ -96,7 +102,11 @@ function searchFunction(event, pageNumber) {
             // c.links?.[0]?.href
 
             console.log(output);
-            document.querySelector("#container").innerHTML = output;
+            document.querySelector("#inner-container").innerHTML = output +
+                `<div id="button-field">
+                <button class="previous-button" onsubmit="searchFunction(event, page)">Previous</button>
+                <button class="next-button" onsubmit="searchFunction(event, page)">Next</button>
+            </div>`;
         });
 
 };
@@ -107,21 +117,23 @@ function earthSearchFunction(event) {
     event.preventDefault();
     console.log("starting...");
 
-            const longitude = document.querySelector("#longitude").value;
-            const latitude = document.querySelector("#latitude").value;
+    const longitude = document.querySelector("#longitude").value;
+    const latitude = document.querySelector("#latitude").value;
 
-            console.log(longitude, latitude);
+    console.log(longitude, latitude);
 
-            const output = `<div>
-            <h2>Earth Coordinates: ${latitude}, ${longitude}...</h2>
-            <img class=mars-pic src="${`https://api.nasa.gov/planetary/earth/imagery?lon=${longitude}&lat=${latitude}&date=2019-01-01&dim=0.15&api_key=${APIKey}`}"
-            </img>
+    const output = `<div id="pre-container">
+            <h2>Earth Coordinates: ${longitude}, ${latitude}...</h2>
+            <img class=image-container src="${`https://api.nasa.gov/planetary/earth/imagery?lon=${longitude}&lat=${latitude}&date=2019-01-01&dim=0.15&api_key=${APIKey}`}"</img>
+            <p><a href="https://www.google.com/search?q=longitude+${longitude}+latitude+${latitude}" target=blank>Where is this?</a></p>
             </div>`
 
-            document.querySelector("#container").innerHTML = output;
-        };
+    document.querySelector("#container").innerHTML = output;
+};
 
 
+// buttons which would navigate between results
+// these are not connected to the function and thus do not work
 buttons.addEventListener("click", function (event) {
 
     if (event.target.classList.contains("previous-button")) {
@@ -137,12 +149,3 @@ buttons.addEventListener("click", function (event) {
     };
 
 });
-
-fetch
-
-
-
-
-// earth
-// https://api.nasa.gov/planetary/earth/imagery?lon=-46.66&lat=-23.52&date=2019-01-01&dim=0.15&api_key=8uZGGWe7lasxPQhS1uvOau4cxaPGO8lxiShMIGaK
-// url parameters would need to be changed
