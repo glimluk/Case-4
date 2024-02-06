@@ -35,9 +35,10 @@ showButton.addEventListener("click", function (vent) {
             console.log("obj", obj, typeof obj);
 
             document.querySelector("#container").innerHTML =
-            `<div>
-            <h3>Image of the Day: ${obj.title}</h3>
-            <p><img class=mars-pic src="${obj.url}" </img>
+            `<div id="pre-container">
+            <h4><u>Image of the Day</u></h4>
+            <h2>${obj.title}</h2>
+            <p><img class=image-container src="${obj.url}" </img>
             </div>`;
 
             console.log(JSON.stringify(obj));
