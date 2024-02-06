@@ -1,33 +1,86 @@
-@media screen and (max-width: 480px) {
-
-body {
-  background-color: rgb(54, 55, 56);
+/* fonts */
+@font-face {
+  font-family: 'Ethnocentric';
+  src: url(fonts/ethnocentric/ethnocentric\ rg.otf);
 }
+
+@font-face {
+  font-family: 'Nobody Talks';
+  src: url(fonts/nobody_talks/Nobody\ Talks.otf);
+}
+
+@font-face {
+  font-family: 'Smart Talk';
+  src: url(fonts/smart_talk/Smart\ Talk.ttf);
+}
+
+@font-face {
+  font-family: 'Nulshock';
+  src: url(fonts/nulshock/nulshock\ bd.otf);
+}
+
+
+
+/* mobile screen */
+@media screen and (max-width: 480px) and (min-height: 845px) {
+
+  body {
+    background-color: rgb(167, 171, 175);
+  }
+
+  /* landing page */
+
+  .landing-body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+
+  .landing-body, .apod-body {
+    background-color: rgba(240, 248, 255, 0.068);
+    background-blend-mode: lighten;
+    background-image: url(images/landing-background.jpg);
+    background-size: cover;
+    font-family: 'Nulshock';
+  }
 
   header {
     width: 100%;
     height: 12vh;
-    border: 1px black solid;
-    background-color: aliceblue;
+    /* border: 1px black solid; */
+    background-color: rgb(204, 204, 204);
   }
 
-  footer {
-    width: 100%;
-    height: 12vh;
-    border: 1px black solid;
-    background-color: aliceblue;
+  #nasa-logo {
+    float: left;
+    width: 20%;
+    margin: 2%;
+  }
+
+  header p {
+    float: right;
+    width: 335px;
+    font-size: 15px;
+    margin: 20px 5px;
   }
 
   .landing-container {
     width: 96%;
-    height: 200px;
+    height: 206px;
     border: 1px black solid;
-    margin: 1%;
+    margin: 1% 2%;
+  }
+
+  #home-nav a {
+    font-family: 'Ethnocentric';
+    color: aliceblue;
+    text-decoration: none;
   }
 
   .nasa-nav {
     background-size: cover;
     background-image: url(images/moon.avif);
+    background-position: 0% 37%;
   }
 
   .mars-nav {
@@ -42,20 +95,192 @@ body {
 
   .text-box {
     width: 250px;
-    height: 40px;
+    height: 36px;
     background-color: tomato;
     border: 1px black solid;
     position: absolute;
-    margin: 30% 20% 0;
+    margin: 25% 20%;
     text-align: center;
     padding-top: 15px;
-    
-    text-decoration: aliceblue;
+    border-radius: 12px;
+  }
+
+  footer {
+    width: 100%;
+    height: 12vh;
+    /* border: 1px black solid; */
+    background-color: rgb(204, 204, 204);
+    position: fixed;
+  }
+
+  footer p {
+    float: left;
+    margin: 5%;
+    width: 90px;
+    text-align: center;
+  }
+
+  footer .apod-nav {
+    /* border: 1px black solid; */
+    width: 50%;
+    height: 100%;
+    float: right;
+  }
+
+  .apod-nav a {
+    transform: rotate(-12deg);
+    position: absolute;
+    width: 130px;
+    margin: 9px -3px;
+    font-family: 'Smart Talk';
+    font-size: 20px;
+    text-decoration: none;
+  }
+
+  footer #astronaut {
+    width: 40%;
+    position: absolute;
+    margin: 7% 13%;
   }
 
 
-  .mars-pic {
+  /* search pages */
+
+  .planet-nav {
+    width: 460px;
+    height: 230px;
+    /* border: 1px black solid; */
+    padding-top: 5%;
+  }
+
+  .main-orb {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    /* border: 1px black solid; */
+    position: absolute;
+    margin: 0 26.5%;
+    /* box-shadow: 100px yellow; */
+  }
+
+  /* .main-orb:hover {
+    color: rgb(0, 0, 0);
+  } */
+
+  .sub-orb {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    /* border: 1px black solid; */
+    filter: blur(0.5px)
+  }
+
+  .pos-1 {
+    margin-left: 50px;
+    position: absolute;
+  }
+
+  .pos-2 {
+    margin-left: 300px;
+    position: absolute;
+  }
+
+  .mars-orb {
+    background-size: cover;
+    background-image: url(images/mars-orb.png);
+  }
+
+  .moon-orb {
+    background-image: url(images/moon-orb.png);
+    background-size: cover;
+  }
+
+  .earth-orb {
+    background-size: cover;
+    background-image: url(images/earth-orb.png);
+  }
+
+  .image-container {
     width: 400px;
+  }
+
+  form {
+    background-color: rgba(240, 248, 255, 0.774);
+    text-align: center;
+    border-radius: 3%;
+    padding: 1%;
+  }
+
+  /* #inner-container {
+    background-color: grey ;
+    text-align: center;
+    padding-bottom: 20px;
+    margin-top: 15px;
+    padding: 10px 0;
+  } */
+
+  #result-container, #pre-container {
+    background-color: rgba(240, 248, 255, 0.664);
+    text-align: center;
+    margin-top: 15px;
+    padding: 10px 0;
+    border-radius: 5%;
+  }
+
+  .earth-body #pre-container {
+    background: linear-gradient(180deg, rgba(31, 56, 99, .8) 0%, rgba(35, 81, 64, .9) 100%);
+  }
+
+  .moon-body #pre-container {
+    background: linear-gradient(180deg, #E6E6E6 0%, rgba(95, 95, 95, 0.56) 100%);
+  }
+
+  .earth-body #pre-container a {
+    color: aliceblue;
+    /* text-decoration: none; */
+  }
+
+  .search-result {
+    border: 1px black solid;
+  }
+
+  .mars-body h1,
+  .moon-body h1,
+  .earth-body h1 {
+    font-family: 'Nobody Talks';
+    font-size: 28px;
+  }
+
+  .mars-body {
+    background-image: url(images/mars-background.webp);
+    background-size: cover;
+    background-position: 25% 17%;
+  }
+
+  .moon-body {
+    background-image: url(images/moon-background.webp);
+    background-position: 5% 0%;
+    background-attachment: fixed;
+  }
+
+  .earth-body {
+    background-image: url(images/earth-background.webp);
+    background-size: 100%;
+    background-attachment: fixed;
+  }
+
+  .mars-body header,
+  .moon-body header,
+  .earth-body header {
+    height: 50px;
+    background-color: rgba(240, 248, 255, 0);
+    border: none;
+  }
+
+  .back-arrow {
+    height: 50px;
+    opacity: 40%;
+    filter: invert(85%) brightness(92%);
   }
 
 }
