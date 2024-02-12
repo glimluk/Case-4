@@ -6,10 +6,7 @@ const APIKey = "8uZGGWe7lasxPQhS1uvOau4cxaPGO8lxiShMIGaK";
 // APOD - Astronomy Picture of the Day
 const apodEndpoint = `https://api.nasa.gov/planetary/apod?api_key=${APIKey}`;
 
-// change to a onclick button
-showButton.addEventListener("click", function () {
-
-    const xhr = new XMLHttpRequest();
+ const xhr = new XMLHttpRequest();
 
     xhr.open("GET", apodEndpoint)
 
@@ -23,11 +20,10 @@ showButton.addEventListener("click", function () {
             `<div id="result-container">
             <h4><u>Image of the Day</u></h4>
             <h2>${obj.title}</h2>
-            <p><img class=image-container src="${obj.url}" </img>
+            <img class=image-container src="${obj.url}" </img>
+            <p>${obj.explanation}</p>
             </div>`;
         }
     });
 
     xhr.send();
-
-});
