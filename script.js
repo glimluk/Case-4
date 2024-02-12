@@ -1,14 +1,16 @@
 // my API key
 const APIKey = "8uZGGWe7lasxPQhS1uvOau4cxaPGO8lxiShMIGaK";
 
-
 // Mars Rover Photos
-let marsUrl;
-marsUrl = `https://api.nasa.gov/mars-photos/api/v1/rovers/Curiosity/photos?sol=1000&api_key=${APIKey}`;
-// marsUrl = "rover.json";
-
-function marsSearchFunction(event) {
+    function marsSearchFunction(event) {
     event.preventDefault();
+
+    const roversSelect = document.getElementById("rovers");
+    const selectedRover = roversSelect.options[roversSelect.selectedIndex].value;
+
+    let marsUrl;
+    marsUrl = `https://api.nasa.gov/mars-photos/api/v1/rovers/${selectedRover}/photos?sol=1000&api_key=${APIKey}`;
+    // marsUrl = "rover.json";
 
     fetch(marsUrl)
         .then(response => response.json())
@@ -18,7 +20,7 @@ function marsSearchFunction(event) {
             const search = document.querySelector("#search").value;
 
             const output = info
-                .filter(p => p.id == (search))
+                .filter(p => p.camera.full_name.toLowerCase().includes(search))
                 .map(p =>
                     `<div id="result-container">
                     <h3>Camera: ${p.camera.full_name}</h3>
@@ -26,7 +28,6 @@ function marsSearchFunction(event) {
                     </div>`
                 )
                 .join("");
-
             document.querySelector("#container").innerHTML = output;
         });
 
@@ -39,8 +40,8 @@ function marsSearchFunction(event) {
 // https://images-api.nasa.gov/search?q=moon&page=2&page_size=6
 // https://images-api.nasa.gov/search?q=moon&keywords=space&page_size=2
 
-let pageNumber = 2;
-let pageSizeNumber = 10;
+const pageNumber = 2;
+const pageSizeNumber = 10;
 
 // endpoint url
 const endpoint = `https://images-api.nasa.gov/search?q=moon&page=${pageNumber}&page_size=${pageSizeNumber}`;

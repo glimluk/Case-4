@@ -23,8 +23,13 @@
     </nav>
 
     <form id="form" onsubmit="marsSearchFunction(event)">
-        <h1>Photos from Mars Curiosity</h1>
-        <input type="text" name="search" id="search" placeholder="Search..." />
+        <h1>Photos from Mars' Rovers</h1>
+        <select name="rovers" id="rovers">
+            <option value="Curiosity">Curiosity</option>
+            <option value="Opportunity">Opportunity</option>
+            <option value="Spirit">Spirit</option>
+        </select>
+        <input type="text" name="search" id="search" placeholder="Search 'camera'..." />
         <button type="submit">Search</button>
 
         <!-- filter buttons ex. pick a rover -->
